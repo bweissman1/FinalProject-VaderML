@@ -130,7 +130,9 @@ def aggregate_directory_sentiments(boolean):
         FOX = directory_to_sentiments('FOX')
         HuffPo = directory_to_sentiments('HuffPo')
         NBCNews = directory_to_sentiments('NBCNews')
+        NPR = directory_to_sentiments('NPR')
         NYT = directory_to_sentiments('NYT')
+        WashPo = directory_to_sentiments('WashPo')
     else:
         pass
 
