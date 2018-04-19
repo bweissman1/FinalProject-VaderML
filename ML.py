@@ -131,5 +131,9 @@ def scanfolder():
     print (frame)
     return frame
 
+def compmodel_ML:
+    features = frame.iloc[]
+    variables = frame.iloc[]
+
 if __name__=='__main__':
     scanfolder()
