@@ -5,6 +5,7 @@ import statistics as stat
 import pandas as pd
 import os
 import glob
+import numpy as np
 
 def article_to_sentiment(file_name):
     analyzer = SentimentIntensityAnalyzer() #initialize analyzer and assign to variable 'analyzer'
@@ -129,11 +130,36 @@ def scanfolder():
          Title = ['Positive', 'Neutral','Negative','Compound','NewsSource']
          frame.columns = Title
     print (frame)
+    frame.to_csv('Frame.csv')
     return frame
 
-def compmodel_ML:
-    features = frame.iloc[]
-    variables = frame.iloc[]
+def compmodel_ML():
+
+    dataset = pd.read_csv('Frame.csv')
+    dataset.drop(['Unnamed: 0'],axis = 1)
+    X = dataset.iloc[:, :-1].values
+    print (X)
+    y = dataset.iloc[:, 5].values
+    print (y)
+
+
+    # Encoding categorical data
+    from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+    labelencoder = LabelEncoder()
+    y = labelencoder.fit_transform(y)
+    print (y)
+    y.reshape(-1,1)
+    onehotencoder = OneHotEncoder(categorical_features = [9])
+    y = onehotencoder.fit_transform(y).toarray()
+    # Avoiding the Dummy Variable Trap
+    X = X[:, 1:]
+    
+    # Splitting the dataset into the Training set and Test set
+    from sklearn.cross_validation import train_test_split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+
+
 
 if __name__=='__main__':
     scanfolder()
