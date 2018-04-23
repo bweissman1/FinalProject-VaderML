@@ -104,10 +104,10 @@ def article_to_sentiment(file_name):
             comp_float_new.append(comp_float[i])
 
     #calculates the mean of each list, rounding the results to 3 decimal places
-    neg = round(stat.mean(neg_float_new),3)
-    neu = round(stat.mean(neu_float_new),3)
-    pos = round(stat.mean(pos_float_new),3)
-    comp = round(stat.mean(comp_float_new),3)
+    neg = stat.mean(neg_float_new)
+    neu = stat.mean(neu_float_new)
+    pos = stat.mean(pos_float_new)
+    comp = stat.mean(comp_float_new)
     x = pos
     y = neu
     z = neg
@@ -175,16 +175,16 @@ def build_centroids(file_path):
     WashPo = (df[df['NewsSource'].str.contains('WashPo')])
 
     # Creating Coordinates
-    AlJazeera = (round(AlJazeera['Positive'].mean(),3),round(AlJazeera['Neutral'].mean(),3),round(AlJazeera['Negative'].mean(),3))
-    BBC = (round(BBC['Positive'].mean(),3),round(BBC['Neutral'].mean(),3),round(BBC['Negative'].mean(),3))
-    Breitbart = (round(Breitbart['Positive'].mean(),3),round(Breitbart['Neutral'].mean(),3),round(Breitbart['Negative'].mean(),3))
-    CNN = (round(CNN['Positive'].mean(),3),round(CNN['Neutral'].mean(),3),round(CNN['Negative'].mean(),3))
-    FOX = (round(FOX['Positive'].mean(),3),round(FOX['Neutral'].mean(),3),round(FOX['Negative'].mean(),3))
-    HuffPo = (round(HuffPo['Positive'].mean(),3),round(HuffPo['Neutral'].mean(),3),round(HuffPo['Negative'].mean(),3))
-    NBCNews = (round(NBCNews['Positive'].mean(),3),round(NBCNews['Neutral'].mean(),3),round(NBCNews['Negative'].mean(),3))
-    NPR = (round(NPR['Positive'].mean(),3),round(NPR['Neutral'].mean(),3),round(NPR['Negative'].mean(),3))
-    NYT = (round(NYT['Positive'].mean(),3),round(NYT['Neutral'].mean(),3),round(NYT['Negative'].mean(),3))
-    WashPo = (round(WashPo['Positive'].mean(),3),round(WashPo['Neutral'].mean(),3),round(WashPo['Negative'].mean(),3))
+    AlJazeera = AlJazeera['Positive'].mean(),AlJazeera['Neutral'].mean(),AlJazeera['Negative'].mean()
+    BBC = BBC['Positive'].mean(),BBC['Neutral'].mean(),BBC['Negative'].mean()
+    Breitbart = Breitbart['Positive'].mean(),Breitbart['Neutral'].mean(),Breitbart['Negative'].mean()
+    CNN = CNN['Positive'].mean(),CNN['Neutral'].mean(),CNN['Negative'].mean()
+    FOX = FOX['Positive'].mean(),FOX['Neutral'].mean(),FOX['Negative'].mean()
+    HuffPo = HuffPo['Positive'].mean(),HuffPo['Neutral'].mean(),HuffPo['Negative'].mean()
+    NBCNews = NBCNews['Positive'].mean(),NBCNews['Neutral'].mean(),NBCNews['Negative'].mean()
+    NPR = NPR['Positive'].mean(),NPR['Neutral'].mean(),NPR['Negative'].mean()
+    NYT = NYT['Positive'].mean(),NYT['Neutral'].mean(),NYT['Negative'].mean()
+    WashPo = WashPo['Positive'].mean(),WashPo['Neutral'].mean(),WashPo['Negative'].mean()
 
     articles = []
     articles.append(AlJazeera)
