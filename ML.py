@@ -115,10 +115,9 @@ def article_to_sentiment(file_name):
 
     return my_list
 
-
 def scanfolder():
     list_of_paths=[]
-    for path, dirs, files in os.walk('/home/jgadasu1/FinalProject-VaderML'):
+    for path, dirs, files in os.walk('/Users/BenWeissman/FinalProject-VaderML'):
         for f in files:
             if f.endswith('.txt'):
                 list_of_paths.append(os.path.join(path, f))
@@ -153,13 +152,64 @@ def compmodel_ML():
     y = onehotencoder.fit_transform(y).toarray()
     # Avoiding the Dummy Variable Trap
     X = X[:, 1:]
-    
+
     # Splitting the dataset into the Training set and Test set
     from sklearn.cross_validation import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
+def build_centroids(file_path):
+    df = pd.read_csv(file_path)
 
+    # Build the News Outlet profiles. Each profile contains
+    # positive, negative, neutral, and compound values for
+    # each individual record in the News Outlet profile
+    AlJazeera = (df[df['NewsSource'].str.contains('Al')])
+    BBC = (df[df['NewsSource'].str.contains('BBC')])
+    Breitbart = (df[df['NewsSource'].str.contains('Breitbart')])
+    CNN = (df[df['NewsSource'].str.contains('CNN')])
+    FOX = (df[df['NewsSource'].str.contains('FOX')])
+    HuffPo = (df[df['NewsSource'].str.contains('HuffPo')])
+    NBCNews = (df[df['NewsSource'].str.contains('NBC')])
+    NPR = (df[df['NewsSource'].str.contains('NPR')])
+    NYT = (df[df['NewsSource'].str.contains('NYT')])
+    WashPo = (df[df['NewsSource'].str.contains('WashPo')])
 
+    # Creating Coordinates
+    AlJazeera = (round(AlJazeera['Positive'].mean(),3),round(AlJazeera['Neutral'].mean(),3),round(AlJazeera['Negative'].mean(),3))
+    BBC = (round(BBC['Positive'].mean(),3),round(BBC['Neutral'].mean(),3),round(BBC['Negative'].mean(),3))
+    Breitbart = (round(Breitbart['Positive'].mean(),3),round(Breitbart['Neutral'].mean(),3),round(Breitbart['Negative'].mean(),3))
+    CNN = (round(CNN['Positive'].mean(),3),round(CNN['Neutral'].mean(),3),round(CNN['Negative'].mean(),3))
+    FOX = (round(FOX['Positive'].mean(),3),round(FOX['Neutral'].mean(),3),round(FOX['Negative'].mean(),3))
+    HuffPo = (round(HuffPo['Positive'].mean(),3),round(HuffPo['Neutral'].mean(),3),round(HuffPo['Negative'].mean(),3))
+    NBCNews = (round(NBCNews['Positive'].mean(),3),round(NBCNews['Neutral'].mean(),3),round(NBCNews['Negative'].mean(),3))
+    NPR = (round(NPR['Positive'].mean(),3),round(NPR['Neutral'].mean(),3),round(NPR['Negative'].mean(),3))
+    NYT = (round(NYT['Positive'].mean(),3),round(NYT['Neutral'].mean(),3),round(NYT['Negative'].mean(),3))
+    WashPo = (round(WashPo['Positive'].mean(),3),round(WashPo['Neutral'].mean(),3),round(WashPo['Negative'].mean(),3))
+
+    articles = []
+    articles.append(AlJazeera)
+    articles.append(BBC)
+    articles.append(Breitbart)
+    articles.append(CNN)
+    articles.append(FOX)
+    articles.append(HuffPo)
+    articles.append(NBCNews)
+    articles.append(NPR)
+    articles.append(NYT)
+    articles.append(WashPo)
+
+    new_frame = pd.DataFrame(articles)
+    Title = ['Positive', 'Neutral','Negative']
+    Index = 'AlJazeera','BBC','Breitbart','CNN','FOX','HuffPo','NBCNews','NPR','NYT','WashPo'
+    new_frame.columns = Title
+    new_frame.index = Index
+    new_frame.to_csv('me.csv')
+    return new_frame
+
+def print_centroids(frame):
+    frame = frame.sort_values(by=['Negative'], ascending=True)
+    print(frame)
 
 if __name__=='__main__':
     scanfolder()
+    print_centroids(build_centroids('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
