@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0">
   <title>about</title>
-  <link rel="stylesheet" href="css/standardize.css">
-  <link rel="stylesheet" href="css/about-grid.css">
-  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='standardize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
 </head>
 <body class="body page-about clearfix">
   <div class="container"></div>
   <p class="text text-1">ABOUT</p>
-  <p onClick="window.location='index.html';" class="text text-2">HOME</p>
-  <p onClick="window.location='resources.html';" class="text text-3">RESOURCES</p>
+  <p onClick="window.location='/';" class="text text-2">HOME</p>
+  <p onClick="window.location='/resources';" class="text text-3">RESOURCES</p>
   <div class="text text-4">
     <p>In our divided world today, accusations of media bias sully the political process and stifle intellectual progress through a perpetual focus on eradicating any emotion behind admonition. Many on both sides of the political aisle see the other side’s news organizations as overly emotional and negative.&nbsp;<br></p>
     <p>We put these accusations to the test and developed a Python program that scrapes the web for news articles involving President Donald Trump from several discrete time periods, performed a sentiment analysis on them, and graphed the mean sentiment on three axes: positive, negative, and neutral.&nbsp;</p>

@@ -5,15 +5,16 @@
   <meta name="viewport" content="initial-scale=1.0">
   <title>Homepage</title>
   <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/standardize.css">
-  <link rel="stylesheet" href="css/index-grid.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='standardize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='indexscript.js') }}"></script>
 </head>
 <body class="body page-index clearfix">
   <header id="header" class="_container clearfix">
-    <p onClick="window.location='about.html';" class="text text-1">ABOUT</p>
+    <p onClick="window.location='/about';" class="text text-1">ABOUT</p>
     <p class="text text-2">HOME</p>
-    <p onClick="window.location='resources.html';" class="text text-3">RESOURCES</p>
+    <p onClick="window.location='/resources';" class="text text-3">RESOURCES</p>
     <input class="_input" placeholder="ex. www.aljazeera.com/news/t9280s84w3" type="text">
     <div class="text text-4">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</p>
@@ -21,7 +22,7 @@
       <p>And so we ask, how does your news source feel?</p>
 </div>
     <p class="text text-5">The News Has Feelings</p>
-    <img class="image image-1" src="images/newspaperimg.png">
+    <img class="image image-1" src="/static/newspaperimg.png">
   </header>
   <section class="main">
     <img class="image image-2" src="images/landrover.jpg">
