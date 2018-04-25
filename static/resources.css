@@ -1,0 +1,95 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font: 400 1em/1.38 Helvetica;
+  color: rgb(0, 0, 0);
+}
+
+.text {
+  color: rgb(0, 0, 0);
+}
+
+.text-1 {
+  position: absolute;
+  top: 26px;
+  left: 70.6458333333%;
+  z-index: 1;
+  width: 7.4440104166%;
+  min-height: 26px;
+  font-size: 1em;
+}
+
+.text-2 {
+  position: absolute;
+  top: 26px;
+  left: 59.15234375%;
+  width: 7.4440104166%;
+  min-height: 26px;
+  font-size: 1em;
+}
+
+.text-3 {
+  float: left;
+  width: 7.4440104166%;
+  min-height: 26px;
+  margin: 27px 0 0 82.13932%;
+  font-size: 1em;
+}
+
+.text-4 {
+  float: left;
+  clear: both;
+  width: 25.6%;
+  min-height: 45px;
+  margin: 56px 0 0 37.1992199999%;
+  font-family: Times-Bold;
+  font-size: 1.563em;
+  font-weight: normal;
+  text-align: center;
+}
+
+.text-5 {
+  position: absolute;
+  top: 154px;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  width: 32.3997395833%;
+  min-height: 31px;
+  margin: 0 auto;
+  font-family: Times;
+  font-size: 1em;
+  text-align: center;
+}
+
+.text-6 {
+  float: left;
+  clear: both;
+  width: 39.2%;
+  min-height: 71px;
+  margin: 107px 0 0 10%;
+  font-family: Times-Bold;
+  font-size: 1.625em;
+  font-weight: normal;
+}
+
+.text-7 {
+  float: left;
+  clear: both;
+  width: 39.19921875%;
+  min-height: 71px;
+  margin: 20px 0 0 10%;
+  font-family: Times-BoldItalic;
+  font-size: 1.625em;
+  font-weight: normal;
+}
+
+.text-8 {
+  float: left;
+  clear: both;
+  width: 39.19921875%;
+  min-height: 71px;
+  margin: 27px 0 0 10%;
+  font-family: Times-BoldItalic;
+  font-size: 1.625em;
+  font-weight: normal;
+}
