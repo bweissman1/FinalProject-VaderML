@@ -157,6 +157,26 @@ def compmodel_ML():
     from sklearn.cross_validation import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
+def build_profiles(file_path):
+    df = pd.read_csv(file_path)
+
+    # Build the News Outlet profiles. Each profile contains
+    # positive, negative, neutral, and compound values for
+    # each individual record in the News Outlet profile
+    AlJazeera = (df[df['NewsSource'].str.contains('Al')])
+    BBC = (df[df['NewsSource'].str.contains('BBC')])
+    Breitbart = (df[df['NewsSource'].str.contains('Breitbart')])
+    CNN = (df[df['NewsSource'].str.contains('CNN')])
+    FOX = (df[df['NewsSource'].str.contains('FOX')])
+    HuffPo = (df[df['NewsSource'].str.contains('HuffPo')])
+    NBCNews = (df[df['NewsSource'].str.contains('NBC')])
+    NPR = (df[df['NewsSource'].str.contains('NPR')])
+    NYT = (df[df['NewsSource'].str.contains('NYT')])
+    WashPo = (df[df['NewsSource'].str.contains('WashPo')])
+
+    list_of_values = dataset.values.tolist()
+    print(list_of_values[10][3])
+
 def build_centroids(file_path):
     df = pd.read_csv(file_path)
 
@@ -210,6 +230,50 @@ def print_centroids(frame):
     frame = frame.sort_values(by=['Negative'], ascending=True)
     print(frame)
 
+def dataframe_to_list(file_path,src):
+    dataset = pd.read_csv(file_path)
+    the_list = dataset.values.tolist()
+    my_list = []
+    for i in range(0,len(the_list)):
+        if the_list[i][5] == src:
+            my_list.append(the_list[i])
+        else:
+            pass
+    for i in range(0,len(my_list)):
+        print(my_list[i])
+
+
+def plot_whole_dataframe(my_list):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    xs = []
+    ys = []
+    zs = []
+    src = []
+    for i in range(0,len(my_list)):
+        xs.append(my_list[i][1])
+        ys.append(my_list[i][2])
+        zs.append(my_list[i][3])
+        src.append(my_list[i][5])
+    print(xs)
+    print(ys)
+    print(zs)
+    print(src)
+    #for i in range(0,len(my_list)):
+    #    if src
+    ax.scatter(xs[i], ys[i], zs[i], c='BLUE')
+
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Y Label')
+    ax.set_zlabel('Z Label')
+
+    #plt.show()
+
 if __name__=='__main__':
-    scanfolder()
-    print_centroids(build_centroids('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #scanfolder()
+    #print_centroids(build_centroids('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #build_profiles('/Users/BenWeissman/FinalProject-VaderML/Frame.csv')
+    #plot_whole_dataframe(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #check_prev(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #plot_whole_dataframe(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv','Al-Jazeera')
