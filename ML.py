@@ -6,115 +6,8 @@ import pandas as pd
 import os
 import glob
 import numpy as np
-import newspaper
+#import newspaper
 
-def url_to_sentiment(url):
-    from newspaper import Article
-    a = Article(url)
-    a.download()
-    a.parse()
-    article = a.text[:]
-    r = str(article)
-    r = r.splitlines()
-    analyzer = SentimentIntensityAnalyzer()
-    a = [] #initialize the empty list 'a', where we will store the polarity scores of the individual lines
-    for i in range(0,len(r)):
-        a.append(str(analyzer.polarity_scores(r[i])))
-    letter_list = [] #initialize the list where we will store all the letters of the list of polarity scores
-    #loop through the list of polarity scores and turn the whole thing into one long string called 'my_string'
-    for j in range(0,len(a)):
-        for k in range(0,len(a[j])):
-            letter_list.append((a[j][k]))
-    my_string = ''.join(map(str, letter_list))
-
-    #remove some punctuation from 'my_string', leaving } to be used to split into a list later
-    my_string = my_string.replace("'", '')
-    my_string = my_string.replace("{",'')
-    my_string = my_string.replace(",",'')
-    my_string = my_string.replace('  ',' ')
-    my_string = my_string.replace(': ', ':')
-
-    #split back into a list of strings with punctuation removed
-    my_list = my_string.split("}")
-
-    #initialize my lists of values for the four sentiments, neg, neu, pos, and comp
-    neg = []
-    neu = []
-    pos = []
-    comp = []
-
-    #scrapes 'my_list' for the values that correspond to each of the sentiments
-    #and sorts them into their respective lists.
-    for g in range (0,len(my_list)):
-        for h in range(0,len(my_list[g])):
-            if (my_list[g][h] == ".") and (my_list[g][h-5:h-1] == "neg:"):
-                neg.append(my_list[g][h-1:h+3])
-            if (my_list[g][h] == ".") and (my_list[g][h-5:h-1] == "neu:"):
-                neu.append(my_list[g][h-1:h+3])
-            if (my_list[g][h] == ".") and (my_list[g][h-5:h-1] == "pos:"):
-                pos.append(my_list[g][h-1:h+3])
-            if (my_list[g][h] == ".") and (my_list[g][h-5:h-1] == "und:"):
-                comp.append(my_list[g][h-1:h+3])
-            if (my_list[g][h-2] == '-'):
-                comp.append(my_list[g][h-2:h+3])
-
-    #initialize a new group of lists, which will store the values of neg, neu, pos,
-    #after their values are tranformed to floats
-    neg_float = []
-    neu_float = []
-    pos_float = []
-    comp_float = []
-    index = []
-
-    #creates an index
-    for i in range(0,7211):
-        index.append(i+1)
-
-    #scrapes the respective lists, converts them to floats, deposits them
-    #into their respective _float lists.
-    for eins in range(0,len(neg)):
-        neg_float.append(float(neg[eins]))
-    for zwei in range(0,len(neu)):
-        neu_float.append(float(neu[zwei]))
-    for drei in range(0,len(pos)):
-        pos_float.append(float(pos[drei]))
-    for vier in range(0,len(comp)):
-        comp_float.append(float(comp[vier]))
-
-    #initialzes a new list which will only include from instances where
-    #comp_float i != 0.0
-    neg_float_new = []
-    neu_float_new = []
-    pos_float_new = []
-    comp_float_new = []
-    index_new = []
-
-    #create an index
-    for i in range(0,7211):
-        index_new.append(i+1)
-
-    #scrape comp_float looking for 0.0 values. if this index value has no
-    #corresponding comp_float value, remove corresponding neg,neu,float vals
-    for i in range(0,len(comp_float)):
-        if (comp_float[i] == 0.0):
-            pass
-        else:
-            neg_float_new.append(neg_float[i])
-            neu_float_new.append(neu_float[i])
-            pos_float_new.append(pos_float[i])
-            comp_float_new.append(comp_float[i])
-
-    #calculates the mean of each list, rounding the results to 3 decimal places
-    neg = stat.mean(neg_float_new)
-    neu = stat.mean(neu_float_new)
-    pos = stat.mean(pos_float_new)
-    comp = stat.mean(comp_float_new)
-    x = pos
-    y = neu
-    z = neg
-    my_list = [x,y,z,comp]
-    print (str(my_list))
-    return my_list
 
 
 
@@ -224,7 +117,6 @@ def article_to_sentiment(file_name):
     y = neu
     z = neg
     my_list = [x,y,z,comp]
-    print (my_list)
     return my_list
 
 def scanfolder():
@@ -240,7 +132,6 @@ def scanfolder():
          frame = pd.DataFrame(articles)
          Title = ['Positive', 'Neutral','Negative','Compound','NewsSource']
          frame.columns = Title
-    print (frame)
     frame.to_csv('Frame.csv')
     return frame
 
@@ -286,8 +177,8 @@ def build_profiles(file_path):
     NYT = (df[df['NewsSource'].str.contains('NYT')])
     WashPo = (df[df['NewsSource'].str.contains('WashPo')])
 
-    list_of_values = dataset.values.tolist()
-    print(list_of_values[10][3])
+    list_of_values = df.values.tolist()
+    print(list_of_values)
 
 def build_centroids(file_path):
     df = pd.read_csv(file_path)
@@ -342,7 +233,8 @@ def print_centroids(frame):
     frame = frame.sort_values(by=['Negative'], ascending=True)
     print(frame)
 
-def dataframe_to_list(file_path,src):
+def dataframe_to_list(src):
+    file_path = '/Users/BenWeissman/FinalProject-VaderML/Frame.csv'
     dataset = pd.read_csv(file_path)
     the_list = dataset.values.tolist()
     my_list = []
@@ -351,42 +243,146 @@ def dataframe_to_list(file_path,src):
             my_list.append(the_list[i])
         else:
             pass
-    for i in range(0,len(my_list)):
-        print(my_list[i])
+    return my_list
 
-
-def plot_whole_dataframe(my_list):
+def plot_whole_dataframe(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    xs = []
-    ys = []
-    zs = []
-    src = []
-    for i in range(0,len(my_list)):
-        xs.append(my_list[i][1])
-        ys.append(my_list[i][2])
-        zs.append(my_list[i][3])
-        src.append(my_list[i][5])
-    print(xs)
-    print(ys)
-    print(zs)
-    print(src)
-    #for i in range(0,len(my_list)):
-    #    if src
-    ax.scatter(xs[i], ys[i], zs[i], c='BLUE')
+
+    #Al-Jazeera
+    xsAJ = []
+    ysAJ = []
+    zsAJ = []
+    srcAJ = []
+    for i in range(0,len(arg1)):
+        xsAJ.append(arg1[i][1])
+        ysAJ.append(arg1[i][2])
+        zsAJ.append(arg1[i][3])
+        srcAJ.append(arg1[i][5])
+
+    #BBC
+    xsBBC = []
+    ysBBC = []
+    zsBBC = []
+    srcBBC = []
+    for i in range(0,len(arg2)):
+        xsBBC.append(arg2[i][1])
+        ysBBC.append(arg2[i][2])
+        zsBBC.append(arg2[i][3])
+        srcBBC.append(arg2[i][5])
+
+    #Breitbart
+    xsBrei = []
+    ysBrei = []
+    zsBrei = []
+    srcBrei = []
+    for i in range(0,len(arg3)):
+        xsBrei.append(arg3[i][1])
+        ysBrei.append(arg3[i][2])
+        zsBrei.append(arg3[i][3])
+        srcBrei.append(arg3[i][5])
+
+    #CNN
+    xsCNN = []
+    ysCNN = []
+    zsCNN = []
+    srcCNN = []
+    for i in range(0,len(arg4)):
+        xsCNN.append(arg4[i][1])
+        ysCNN.append(arg4[i][2])
+        zsCNN.append(arg4[i][3])
+        srcCNN.append(arg4[i][5])
+
+    #FOX
+    xsFOX = []
+    ysFOX = []
+    zsFOX = []
+    srcFOX = []
+    for i in range(0,len(arg5)):
+        xsFOX.append(arg5[i][1])
+        ysFOX.append(arg5[i][2])
+        zsFOX.append(arg5[i][3])
+        srcFOX.append(arg5[i][5])
+
+    #HuffPo
+    xsHuffPo = []
+    ysHuffPo = []
+    zsHuffPo = []
+    srcHuffPo = []
+    for i in range(0,len(arg6)):
+        xsHuffPo.append(arg6[i][1])
+        ysHuffPo.append(arg6[i][2])
+        zsHuffPo.append(arg6[i][3])
+        srcHuffPo.append(arg6[i][5])
+
+    #NBCNews
+    xsNBCNews = []
+    ysNBCNews = []
+    zsNBCNews = []
+    srcNBCNews = []
+    for i in range(0,len(arg7)):
+        xsNBCNews.append(arg7[i][1])
+        ysNBCNews.append(arg7[i][2])
+        zsNBCNews.append(arg7[i][3])
+        srcNBCNews.append(arg7[i][5])
+
+    #NPR
+    xsNPR= []
+    ysNPR = []
+    zsNPR = []
+    srcNPR = []
+    for i in range(0,len(arg8)):
+        xsNPR.append(arg8[i][1])
+        ysNPR.append(arg8[i][2])
+        zsNPR.append(arg8[i][3])
+        srcNPR.append(arg8[i][5])
+
+    #NYT
+    xsNYT = []
+    ysNYT = []
+    zsNYT = []
+    srcNYT = []
+    for i in range(0,len(arg9)):
+        xsNYT.append(arg9[i][1])
+        ysNYT.append(arg9[i][2])
+        zsNYT.append(arg9[i][3])
+        srcNYT.append(arg9[i][5])
+
+    #WashPo
+    xsWashPo = []
+    ysWashPo = []
+    zsWashPo = []
+    srcWashPo = []
+    for i in range(0,len(arg10)):
+        xsFOX.append(arg10[i][1])
+        ysFOX.append(arg10[i][2])
+        zsFOX.append(arg10[i][3])
+        srcFOX.append(arg10[i][5])
+
+    ax.scatter(xsAJ, ysAJ, zsAJ, c='RED')
+    ax.scatter(xsBBC, ysBBC, zsBBC, c='ORANGE')
+    ax.scatter(xsBrei, ysBrei, zsBrei, c='YELLOW')
+    ax.scatter(xsCNN, ysCNN, zsCNN, c='GREEN')
+    ax.scatter(xsFOX, ysFOX, zsFOX, c='BLUE')
+    ax.scatter(xsHuffPo, ysHuffPo, zsHuffPo, c='PURPLE')
+    ax.scatter(xsNBCNews, ysNBCNews, zsNBCNews, c='OLIVE')
+    ax.scatter(xsNPR, ysNPR, zsNPR, c='GRAY')
+    ax.scatter(xsNYT, ysNYT, zsNYT, c='MAROON')
+    ax.scatter(xsWashPo, ysWashPo, zsWashPo, c='BLACK')
+
 
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
 
-    #plt.show()
+    plt.show()
 
 if __name__=='__main__':
     #scanfolder()
     #print_centroids(build_centroids('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
     #build_profiles('/Users/BenWeissman/FinalProject-VaderML/Frame.csv')
-    #plot_whole_dataframe(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    plot_whole_dataframe(dataframe_to_list('Al-Jazeera'),dataframe_to_list('BBC'),dataframe_to_list('Breitbart'),dataframe_to_list('CNN'),dataframe_to_list('FOX'),dataframe_to_list('HuffPo'),dataframe_to_list('NBCNews'),dataframe_to_list('NPR'),dataframe_to_list('NYT'),dataframe_to_list('WashPo'))
     #check_prev(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
     #plot_whole_dataframe(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
     #dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv','Al-Jazeera')
-    url_to_sentiment('https://www.cnn.com/2018/05/01/politics/stormy-daniels-midterm-elections/index.html')
+    #url_to_sentiment('https://www.cnn.com/2018/05/01/politics/stormy-daniels-midterm-elections/index.html')
