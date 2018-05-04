@@ -9,9 +9,6 @@ import numpy as np
 import newspaper
 
 
-
-
-
 def article_to_sentiment(file_name):
     analyzer = SentimentIntensityAnalyzer() #initialize analyzer and assign to variable 'analyzer'
     my_file = open(file_name) #open the specified file and assign to variable 'my_file'
@@ -120,6 +117,7 @@ def article_to_sentiment(file_name):
     return my_list
 
 def url_to_sentiment(url):
+    """Takes a URL from the user, """
     from newspaper import Article
     a = Article(url)
     a.download()
@@ -226,7 +224,6 @@ def url_to_sentiment(url):
     my_list = [x,y,z,comp]
     print (str(my_list))
     return my_list
-
 
 def scanfolder():
     list_of_paths=[]
@@ -342,7 +339,7 @@ def print_centroids(frame):
     frame = frame.sort_values(by=['Negative'], ascending=True)
     print(frame)
 
-def dataframe_to_list(src):
+def dataframe_to_sourceframe(src):
     file_path = '/Users/BenWeissman/FinalProject-VaderML/Frame.csv'
     dataset = pd.read_csv(file_path)
     the_list = dataset.values.tolist()
@@ -354,130 +351,63 @@ def dataframe_to_list(src):
             pass
     return my_list
 
-def plot_whole_dataframe(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10):
+
+class SourceFrameToListOfLists(object):
+
+    def __init__(self,sourceframe):
+        self.sourceframe = sourceframe
+        self.positive = []
+        self.neutral = []
+        self.negative = []
+        self.compound = []
+        self.news_source = []
+        self.src = sourceframe[0][5]
+        self.temp_list = []
+        self.list_of_points = []
+
+    def show_about(self):
+        print("Source: " + self.src)
+        print("n = " + str(len(self.sourceframe)))
+
+    def populate_and_return_list_of_points(self):
+        for i in range(0,len(self.sourceframe)):
+            self.positive.append(self.sourceframe[i][1])
+            self.neutral.append(self.sourceframe[i][2])
+            self.negative.append(self.sourceframe[i][3])
+            self.compound.append(self.sourceframe[i][4])
+            self.news_source.append(self.sourceframe[i][5])
+        my_list = [self.positive,self.neutral,self.negative,self.compound,self.news_source]
+        self.list_of_points = []
+        self.temp_list = []
+        for i in range(0,len(my_list[0])):
+            self.temp_list = [my_list[0][i],my_list[1][i],my_list[2][i],my_list[3][i],my_list[4][i]]
+            self.list_of_points.append(self.temp_list)
+        return self.list_of_points
+
+    def populate_and_return_lists_of_values(self):
+        for i in range(0,len(self.sourceframe)):
+            self.positive.append(self.sourceframe[i][1])
+            self.neutral.append(self.sourceframe[i][2])
+            self.negative.append(self.sourceframe[i][3])
+            self.compound.append(self.sourceframe[i][4])
+            self.news_source.append(self.sourceframe[i][5])
+        my_list = [self.positive,self.neutral,self.negative,self.compound,self.news_source]
+        return my_list
+
+def plot_whole_dataframe(*args):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
-    #Al-Jazeera
-    xsAJ = []
-    ysAJ = []
-    zsAJ = []
-    srcAJ = []
-    for i in range(0,len(arg1)):
-        xsAJ.append(arg1[i][1])
-        ysAJ.append(arg1[i][2])
-        zsAJ.append(arg1[i][3])
-        srcAJ.append(arg1[i][5])
-
-    #BBC
-    xsBBC = []
-    ysBBC = []
-    zsBBC = []
-    srcBBC = []
-    for i in range(0,len(arg2)):
-        xsBBC.append(arg2[i][1])
-        ysBBC.append(arg2[i][2])
-        zsBBC.append(arg2[i][3])
-        srcBBC.append(arg2[i][5])
-
-    #Breitbart
-    xsBrei = []
-    ysBrei = []
-    zsBrei = []
-    srcBrei = []
-    for i in range(0,len(arg3)):
-        xsBrei.append(arg3[i][1])
-        ysBrei.append(arg3[i][2])
-        zsBrei.append(arg3[i][3])
-        srcBrei.append(arg3[i][5])
-
-    #CNN
-    xsCNN = []
-    ysCNN = []
-    zsCNN = []
-    srcCNN = []
-    for i in range(0,len(arg4)):
-        xsCNN.append(arg4[i][1])
-        ysCNN.append(arg4[i][2])
-        zsCNN.append(arg4[i][3])
-        srcCNN.append(arg4[i][5])
-
-    #FOX
-    xsFOX = []
-    ysFOX = []
-    zsFOX = []
-    srcFOX = []
-    for i in range(0,len(arg5)):
-        xsFOX.append(arg5[i][1])
-        ysFOX.append(arg5[i][2])
-        zsFOX.append(arg5[i][3])
-        srcFOX.append(arg5[i][5])
-
-    #HuffPo
-    xsHuffPo = []
-    ysHuffPo = []
-    zsHuffPo = []
-    srcHuffPo = []
-    for i in range(0,len(arg6)):
-        xsHuffPo.append(arg6[i][1])
-        ysHuffPo.append(arg6[i][2])
-        zsHuffPo.append(arg6[i][3])
-        srcHuffPo.append(arg6[i][5])
-
-    #NBCNews
-    xsNBCNews = []
-    ysNBCNews = []
-    zsNBCNews = []
-    srcNBCNews = []
-    for i in range(0,len(arg7)):
-        xsNBCNews.append(arg7[i][1])
-        ysNBCNews.append(arg7[i][2])
-        zsNBCNews.append(arg7[i][3])
-        srcNBCNews.append(arg7[i][5])
-
-    #NPR
-    xsNPR= []
-    ysNPR = []
-    zsNPR = []
-    srcNPR = []
-    for i in range(0,len(arg8)):
-        xsNPR.append(arg8[i][1])
-        ysNPR.append(arg8[i][2])
-        zsNPR.append(arg8[i][3])
-        srcNPR.append(arg8[i][5])
-
-    #NYT
-    xsNYT = []
-    ysNYT = []
-    zsNYT = []
-    srcNYT = []
-    for i in range(0,len(arg9)):
-        xsNYT.append(arg9[i][1])
-        ysNYT.append(arg9[i][2])
-        zsNYT.append(arg9[i][3])
-        srcNYT.append(arg9[i][5])
-
-    #WashPo
-    xsWashPo = []
-    ysWashPo = []
-    zsWashPo = []
-    srcWashPo = []
-    for i in range(0,len(arg10)):
-        xsFOX.append(arg10[i][1])
-        ysFOX.append(arg10[i][2])
-        zsFOX.append(arg10[i][3])
-        srcFOX.append(arg10[i][5])
-
-    ax.scatter(xsAJ, ysAJ, zsAJ, c='RED')
-    ax.scatter(xsBBC, ysBBC, zsBBC, c='ORANGE')
-    ax.scatter(xsBrei, ysBrei, zsBrei, c='YELLOW')
-    ax.scatter(xsCNN, ysCNN, zsCNN, c='GREEN')
-    ax.scatter(xsFOX, ysFOX, zsFOX, c='BLUE')
-    ax.scatter(xsHuffPo, ysHuffPo, zsHuffPo, c='PURPLE')
-    ax.scatter(xsNBCNews, ysNBCNews, zsNBCNews, c='OLIVE')
-    ax.scatter(xsNPR, ysNPR, zsNPR, c='GRAY')
-    ax.scatter(xsNYT, ysNYT, zsNYT, c='MAROON')
-    ax.scatter(xsWashPo, ysWashPo, zsWashPo, c='BLACK')
+    ax.scatter(args[0][0], args[0][1], args[0][2], c='RED')
+    ax.scatter(args[1][0], args[1][1], args[1][2], c='ORANGE')
+    ax.scatter(args[2][0], args[2][1], args[2][2], c='YELLOW')
+    ax.scatter(args[3][0], args[3][1], args[3][2], c='GREEN')
+    ax.scatter(args[4][0], args[4][1], args[4][2], c='BLUE')
+    ax.scatter(args[5][0], args[5][1], args[5][2], c='PURPLE')
+    ax.scatter(args[6][0], args[6][1], args[6][2], c='OLIVE')
+    ax.scatter(args[7][0], args[7][1], args[7][2], c='GRAY')
+    ax.scatter(args[8][0], args[8][1], args[8][2], c='MAROON')
+    ax.scatter(args[9][0], args[9][1], args[9][2], c='BLACK')
 
 
     ax.set_xlabel('X Label')
@@ -486,12 +416,32 @@ def plot_whole_dataframe(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10):
 
     plt.show()
 
+
+def form_final_frame(*args):
+    final_frame = []
+    for i in range(0,len(args)):
+        final_frame.append(SourceFrameToListOfLists(dataframe_to_sourceframe(args[i])).populate_and_return_list_of_points())
+
+
 if __name__=='__main__':
     #scanfolder()
     #print_centroids(build_centroids('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
     #build_profiles('/Users/BenWeissman/FinalProject-VaderML/Frame.csv')
-    plot_whole_dataframe(dataframe_to_list('Al-Jazeera'),dataframe_to_list('BBC'),dataframe_to_list('Breitbart'),dataframe_to_list('CNN'),dataframe_to_list('FOX'),dataframe_to_list('HuffPo'),dataframe_to_list('NBCNews'),dataframe_to_list('NPR'),dataframe_to_list('NYT'),dataframe_to_list('WashPo'))
-    #check_prev(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
-    #plot_whole_dataframe(dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
-    #dataframe_to_list('/Users/BenWeissman/FinalProject-VaderML/Frame.csv','Al-Jazeera')
+    #plot_whole_dataframe(dataframe_to_sourceframe('Al-Jazeera'),dataframe_to_sourceframe('BBC'),dataframe_to_sourceframe('Breitbart'),dataframe_to_sourceframe('CNN'),dataframe_to_sourceframe('FOX'),dataframe_to_sourceframe('HuffPo'),dataframe_to_sourceframe('NBCNews'),dataframe_to_sourceframe('NPR'),dataframe_to_sourceframe('NYT'),dataframe_to_sourceframe('WashPo'))
+    #check_prev(dataframe_to_sourceframe('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #plot_whole_dataframe(dataframe_to_sourceframe('/Users/BenWeissman/FinalProject-VaderML/Frame.csv'))
+    #dataframe_to_sourceframe('/Users/BenWeissman/FinalProject-VaderML/Frame.csv','Al-Jazeera')
     #url_to_sentiment('https://www.cnn.com/2018/05/01/politics/stormy-daniels-midterm-elections/index.html')
+
+    a = SourceFrameToListOfLists(dataframe_to_sourceframe('Al-Jazeera')).populate_and_return_lists_of_values()
+    b = SourceFrameToListOfLists(dataframe_to_sourceframe('BBC')).populate_and_return_lists_of_values()
+    c = SourceFrameToListOfLists(dataframe_to_sourceframe('Breitbart')).populate_and_return_lists_of_values()
+    d = SourceFrameToListOfLists(dataframe_to_sourceframe('CNN')).populate_and_return_lists_of_values()
+    e = SourceFrameToListOfLists(dataframe_to_sourceframe('FOX')).populate_and_return_lists_of_values()
+    f = SourceFrameToListOfLists(dataframe_to_sourceframe('HuffPo')).populate_and_return_lists_of_values()
+    g = SourceFrameToListOfLists(dataframe_to_sourceframe('NBCNews')).populate_and_return_lists_of_values()
+    h = SourceFrameToListOfLists(dataframe_to_sourceframe('NPR')).populate_and_return_lists_of_values()
+    i = SourceFrameToListOfLists(dataframe_to_sourceframe('NYT')).populate_and_return_lists_of_values()
+    j = SourceFrameToListOfLists(dataframe_to_sourceframe('WashPo')).populate_and_return_lists_of_values()
+
+    plot_whole_dataframe(a,b,c,d,e,f,g,h,i,j)
