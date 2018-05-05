@@ -1,0 +1,7 @@
+## Architecture Review Reflection
+
+The architectural review allowed us to explore different approaches and architectures in the implementation of our project and solicit feedback with regard to feasibility and ideas for our project. Some of the most important points that were brought up by the class included difficulties surrounding the collection of articles from disparate sources, interacting with the data of different websites, and the bias fidelity of the sentiment metric. It was also suggested that we incorporate a feature that allows the user to parse out the individual metrics on a 2D plane.
+
+Going forward, we plan to attempt to build an extensible scraper that we will modify for each website. If this proves too difficult, we will collect the data manually. In addition, we will look at quantitative methods for ensuring the sensitivity of the bias algorithm.
+
+All of our key questions were answered and we gained some clarity about how to move forward. I think we provided adequate context for our audience, at worst, maybe a little too much. We stuck closely to our planned agenda, setting the foundation for a constructive Q&A session. While we collaborated online prior to the presentation, meeting in person to rehearse could have led to a more fluid, more practiced presentation. Furthermore, the survey that was filled gave us more insight into how we could scope our project more efficiently.
