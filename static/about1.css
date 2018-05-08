@@ -1,0 +1,285 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font: 400 1em/1.38 'Droid Serif';
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  float: left;
+  clear: both;
+  width: 42.9088541666%;
+  height: 30px;
+  margin: 79px 0 0 28.25%;
+}
+
+.image {
+  display: block;
+  height: auto;
+  overflow: hidden;
+}
+
+.text-11 p,
+.text-13 p,
+.text-14 p,
+.text-16 p,
+.text-18 p,
+.text-20 p,
+.text-7 p,
+.text-9 p {
+  margin-bottom: 1em;
+}
+
+.image-1 {
+  position: absolute;
+  top: 1213px;
+  left: 27.8502604166%;
+  z-index: 12;
+  width: 559px;
+}
+
+.image-2 {
+  position: relative;
+  float: left;
+  z-index: 8;
+  width: 377px;
+  margin: 176px 0 0 17.36198%;
+}
+
+.image-3 {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 15;
+  width: 288px;
+  margin: 14px 0 0 25.19922%;
+}
+
+.image-4 {
+  position: relative;
+  float: left;
+  z-index: 16;
+  width: 301px;
+  margin-top: 14px;
+}
+
+.text-1 {
+  position: absolute;
+  top: 840px;
+  left: 16%;
+  z-index: 11;
+  width: 24.3502604166%;
+  min-height: 38px;
+  font-size: 1em;
+  font-weight: Bold;
+  color: rgb(0, 0, 0);
+}
+
+.text-10 {
+  position: absolute;
+  top: 124px;
+  left: 0;
+  right: 0;
+  width: 43.5%;
+  min-height: 93px;
+  margin: 0 auto;
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.text-11 {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 10;
+  width: 66.6666666666%;
+  min-height: 279px;
+  margin: 268px 0 0 16%;
+  font-size: 1em;
+  font-weight: Regular;
+  color: rgb(0, 0, 0);
+}
+
+.text-12 {
+  float: left;
+  clear: both;
+  width: 27.5833333333%;
+  min-height: 26px;
+  margin: 499px 0 0 16.01693%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.text-13 {
+  float: left;
+  clear: both;
+  width: 71.5%;
+  min-height: 134px;
+  margin: 6px 0 0 16.01693%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-14 {
+  float: left;
+  clear: both;
+  width: 67.1666666666%;
+  min-height: 134px;
+  margin: 54px 0 0 16%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-15 {
+  float: left;
+  clear: both;
+  width: 42.0833333333%;
+  min-height: 26px;
+  margin: 26px 0 0 16.01693%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(30, 0, 0);
+}
+
+.text-17 {
+  float: left;
+  clear: both;
+  width: 42.0833333333%;
+  min-height: 26px;
+  margin: 27px 0 0 16.01693%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(30, 0, 0);
+}
+
+.text-19 {
+  float: left;
+  clear: both;
+  width: 42.0833333333%;
+  min-height: 26px;
+  margin: 36px 0 0 16.01693%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(30, 0, 0);
+}
+
+.text-2 {
+  position: absolute;
+  top: 170px;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  width: 25.6666666666%;
+  min-height: 99px;
+  margin: 0 auto;
+  font-size: 1em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.text-16,
+.text-18,
+.text-20 {
+  float: left;
+  clear: both;
+  width: 68.0833333333%;
+  min-height: 134px;
+  margin-left: 16%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-21 {
+  width: 45.5%;
+  min-height: 26px;
+  margin: 3710px auto 0;
+  font-size: 1.563em;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.text-3 {
+  position: absolute;
+  top: 26px;
+  left: 71.1588541666%;
+  z-index: 6;
+  width: 7.4440104166%;
+  min-height: 25px;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(103, 103, 103);
+}
+
+.text-4 {
+  position: absolute;
+  top: 26px;
+  left: 59.6653645833%;
+  z-index: 5;
+  width: 7.4440104166%;
+  min-height: 25px;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-5 {
+  position: relative;
+  float: left;
+  z-index: 7;
+  width: 7.4440104166%;
+  min-height: 25px;
+  margin: 28px 0 0 82.65365%;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-6 {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 2;
+  width: 26.7994791666%;
+  min-height: 52px;
+  margin: 207px 0 0 16%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.text-7 {
+  position: absolute;
+  top: 707px;
+  left: 16.0169270833%;
+  z-index: 4;
+  width: 55.3333333333%;
+  min-height: 33px;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-8 {
+  position: absolute;
+  top: 686px;
+  left: 16%;
+  z-index: 3;
+  width: 13.19921875%;
+  min-height: 26px;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.text-9 {
+  position: absolute;
+  top: 288px;
+  left: 16%;
+  z-index: 1;
+  width: 40.4166666666%;
+  min-height: 272px;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}

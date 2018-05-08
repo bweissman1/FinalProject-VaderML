@@ -1,0 +1,131 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font: 400 1em/1.38 'Droid Serif';
+  color: rgb(0, 0, 0);
+}
+
+.text-1 {
+  position: absolute;
+  top: 27px;
+  left: 71.1940104166%;
+  z-index: 1;
+  width: 7.4440104166%;
+  min-height: 26px;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-10 {
+  float: left;
+  clear: both;
+  width: 29.25%;
+  min-height: 66px;
+  margin-left: 10%;
+  font-size: 1.25em;
+  color: rgb(90, 0, 0);
+}
+
+.text-11 {
+  float: left;
+  clear: both;
+  width: 39.19921875%;
+  min-height: 71px;
+  margin: 60px 0 0 10%;
+  font-size: 3.125em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.text-12 {
+  float: left;
+  clear: both;
+  width: 25.6%;
+  min-height: 50px;
+  margin: 15px 0 0 10%;
+  font-size: 1.25em;
+  color: rgb(90, 0, 0);
+}
+
+.text-2 {
+  position: absolute;
+  top: 27px;
+  left: 59.7005208333%;
+  width: 7.4440104166%;
+  min-height: 26px;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.text-3 {
+  float: left;
+  width: 7.4440104166%;
+  min-height: 26px;
+  margin: 28px 0 0 82.6849%;
+  font-family: Helvetica;
+  font-size: 1em;
+  color: rgb(103, 103, 103);
+}
+
+.text-4 {
+  width: 25.5989583333%;
+  min-height: 45px;
+  margin: 88px auto 0;
+  font-size: 1.563em;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.text-5 {
+  float: left;
+  clear: both;
+  width: 38.0833333333%;
+  min-height: 31px;
+  margin: 7px 0 0 30.30469%;
+  font-size: 1em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.text-6 {
+  float: left;
+  clear: both;
+  width: 32.8333333333%;
+  min-height: 79px;
+  margin: 106px 0 0 9.84375%;
+  font-size: 2.813em;
+  color: rgb(0, 0, 0);
+}
+
+.text-7 {
+  float: left;
+  clear: both;
+  width: 33.4166666666%;
+  min-height: 98px;
+  margin: 58px 0 0 10%;
+  font-size: 3.125em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.text-8 {
+  float: left;
+  clear: both;
+  width: 34%;
+  min-height: 47px;
+  margin: 5px 0 0 10%;
+  font-size: 1.25em;
+  color: rgb(90, 0, 0);
+}
+
+.text-9 {
+  float: left;
+  clear: both;
+  width: 36.4166666666%;
+  min-height: 46px;
+  margin: 68px 0 0 9.84375%;
+  font-size: 1.5em;
+  color: rgb(0, 0, 0);
+}

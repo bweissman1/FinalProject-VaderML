@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>Homepage</title>
+  <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='standardize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="body page-index clearfix" id="main" onload="jumpToGraph()">
+  <body class="body page-index clearfix" id="main" onload="fadeIn()">
+    <section class="main clearfix">
+      <img class="image graph" src="/static/graph.png">
+      <img class="image sentiment" src="/static/sentiment.png">
+      <img class="image scraper" src="/static/scraper.png">
+      <p class="text method">Methodology</p>
+      <p class="text howits"><br>HOW IT'S DONE<br></p>
+      <p class="text sentimenttext">From NLTK, a Vader Sentiment analysis is conducted on the article, delivering four points of measurement: negative, postive, neutral, and compound values</p>
+      <p class="text analysistext">Using Matplotlib, the article is plotted and compared against 300 points of data from 10 different mainstream sources from outlets like CNN, WashPo, and NYTimes</p>
+      <p class="text scrapertext">The news article is scraped using Newspaper3k's article.text, delivering the article free of links, images, and other fluff</p>
+      <div id="method" class="element"></div>
+    </section>
+    <header id="header" class="_container clearfix">
+      <p class="text home">HOME</p>
+      <p onClick="window.location='/about';" class="text about">ABOUT</p>
+      <p onClick="window.location='/resources';" class="text resources">RESOURCES</p>
+
+      <form method="POST">
+        <input class="_input" id="url" name="url" placeholder="ex. www.aljazeera.com/news/t9280s84w3" type="text">
+
+      </form>
+      <p class="enterurl">Enter a URL below, and see how your news feels.</p>
+      <p class="newshas">The News Has Feelings</p>
+    </header>
+  </header>
+  </section>
+  <section class="results clearfix" id="results">
+    <div id="method" class="element"></div>
+    <p class="text text-8">RESULTS</p>
+    <div class="text text-9">
+      <p>Your point has been graphed in black amongst 300 other articles</p>
+      <p>All points, including yours, have been measured for sentiment and plotted accordingly</p>
+</div>
+    <img class="image" src="/static/demograph3.png" width=530px height=365px>
+  </section>
+    <p onClick="window.location='/mlfindings';" class="text text-10">Does it mean we can classify on sentiment? Find out.</p>
+
+<script src="{{ url_for('static', filename='indexscript.js') }}"></script>
+</body>
+
+  <script src="{{ url_for('static', filename='indexscript.js') }}"></script>
+</html>

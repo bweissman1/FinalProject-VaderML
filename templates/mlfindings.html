@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>mlfindings</title>
+  <link href="http://fonts.googleapis.com/css?family=Droid+Serif:700,400,400" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='standardize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mlfindings.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mlfindings-grid.css') }}">
+</head>
+<body class="body page-mlfindings clearfix">
+  <p onClick="window.location='/resources';" class="text text-1">RESOURCES</p>
+  <p class="text text-2">Data Analysis</p>
+  <p class="text text-3">Support Vector Machine Regression</p>
+  <p class="text text-4">The Results</p>
+  <p class="text text-5">Naïve Bayes
+</p>
+  <p class="text text-6">The Results</p>
+  <p class="text text-7">Random Forest Regression
+</p>
+  <div class="text text-8">
+    <p>This is the beginning of the conclusion paragraph. When we had the data points plotted on a 3-D plane, we noticed an apparent curvilinear appearance of the group when viewed along one of the planes. We, thus, decided to use the multiple linear regression method to try classifying our data.&nbsp;</p>
+    <p><br>To do this, we transformed the various dependent variables into dummy variables and attempted to perform regression analyses with the various variables as news sources. We used the One-Hot Encoder from the sci-kit learn package and went out to do some analysis.<br></p>
+</div>
+  <img class="image image-1" src="/static/mlr.png" width=426px height=387px>
+  <p class="text text-9">The accuracy of this model proved to be the lowest from our analyses using various tools. Clearly, this was a model to be discarded immediately.
+</p>
+  <div class="text text-10">
+    <p>When we had the data points plotted on a 3-D plane, we noticed an apparent curvilinear appearance of the group when viewed along one of the planes. We, thus, decided to use the multiple linear regression method to try classifying our data.&nbsp;</p>
+    <p><br>To do this, we transformed the various dependent variables into dummy variables and attempted to perform regression analyses with the various variables as news sources. We used the One-Hot Encoder from the sci-kit learn package and went out to do some analysis.<br></p>
+</div>
+  <img class="image image-2" src="/static/knearestneighbor.png" width=426px height=383px>
+  <p class="text text-11">After tuning many parameters, such as the test size, the random state, n_neighbors, the p value, we achieved a maximum accuracy score of 17.14%. While this was considerably more accurate than most of our algorithms, it failed to meet our expectation for our conjecture. Again, this meant that four in every five times, sentiment couldn’t be used to predict the news source. These results defeated our hypotheses of sentiment playing a role in news publication. At this point, we had concluded that sentiment was of no significance in the publishing of news; more especially in the dissemination of news concerning President Trump prior to his election.
+</p>
+  <div class="text text-12">
+    <p>The basic idea of a K-Nearest Neighbors is best exemplified by the following saying “If it walks like a duck, quacks like a duck, and looks like a duck, then it’s probably a duck.’ It explains the idea that the class of a test instance is determined by the class type of its nearest neighbors.&nbsp;</p>
+    <p>K-Nearest Neighbors classifier represents each example as a data point in a d-dimensional space, where d is the number of attribute. Given a test example, we compute its proximity to the rest of the data points in the training set, using an appropriate proximity measurement metric. The K-Nearest Neighbors of a given point z means the K points that are closest to point </p>
+</div>
+  <img class="image image-3" src="/static/randomforestregression.png" width=426px height=379px>
+  <p class="text text-13">At this point in our analysis, it was becoming clear to us that maybe the allegation that certain newspapers are biased in terms of the sentiment they use to report certain news stories, especially concerning the Trump Campaign, were simply untrue and unsubstantiated. With an accuracy score of 12%, we were slowly becoming convinced that our initial assumptions were untrue.
+</p>
+  <div class="text text-14">
+    <p>Random Forest is considered to be a panacea of all data science problems. On a funny note, when you can’t think of any algorithm, use random forest. In Random Forest, we grow multiple trees to classify a new object based on attributes.&nbsp;</p>
+    <p><br>Each tree gibes a classification and we say that the tree ‘votes’ for the class. The forest chooses the classification having the most votes and in case of regression, it takes the average of outputs by different trees.&nbsp;<br></p>
+</div>
+  <p class="text text-15">After tuning many parameters, such as the test size, the random state etc, we achieved a maximum accuracy score of 14.67%. Again, this meant that nine in every ten times, sentiment couldn’t be used to predict the news source. These results defeated our hypotheses of sentiment playing a role in news publication. We, therefore explored other methods of classification.
+</p>
+  <img class="image image-4" src="/static/naivebayes.png" width=426px height=387px>
+  <img class="image image-5" src="/static/supportvector.png" width=426px height=384px>
+  <div class="text text-16">
+    <p>This classification technique based on Bayes’ Theorem with an assumption of independence among predictors. In simple terms, a Naïve Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature.&nbsp;</p>
+    <p><br>Our team had recognized that the fact the a highly positive sentiment may correlate with a low negative sentiment. As such, the independence assumption was easily violated. We therefore felt that the Naïve Bayes Classifier was going to have an extremely low accuracy&nbsp;<br></p>
+</div>
+  <p class="text text-17">After tuning many parameters, such as the test size, the random state etc, we achieved a maximum accuracy score of 13.33%. This meant that nine in every ten times, sentiment couldn’t be used to predict the news source. These results defeated our hypotheses of sentiment playing a role in news publication. We, therefore sought out to use other methods of classification.</p>
+  <div class="text text-18">
+    <p>Support Vector Machine is a supervised machine learning algorithm which can be used for both classification and regression challenges. However, it is mostly used in classification problems.&nbsp;</p>
+    <p>In this algorithm, we plot each data item as a point in n-dimensional space (where n is the number of features or predictors) with the value of each feature being the value of a particular coordinate. Then, we perform classification by finding the hyperplane that differentiates the two classes very well. With four features in our dataset, our team used the algorithm to find a plane in 4-dimensional space that could segregate the various sentiments into the various articles we had explored.<br></p>
+</div>
+  <div class="text text-19">
+    <p>There was lot of buzz in the US regarding how the press and the media may show some political bias in the dissemination of news.&nbsp;</p>
+    <p><br>This was particularly echoed during the Clinton-Trump presidential election and even since then, has been the subject of many discussions. Our team sought to verify this allegation for a large crowd of people who share this belief. Most of us in the team felt as though some channels tended to lean toward certain sides of the political spectrum than others. We thought it’ll be interesting exploring these more. To do this we built a scraper and scraped many articles from various news sources and did some preliminary data analysis.&nbsp;</p>
+    <p>All the code that was written to support this study was published on GitHub<br><br>(https://github.com/bweissman1/FinalProject-VaderML).&nbsp;</p>
+    <p>Feel free to download the code if you’re interested in carrying out similar studies yourself!<br></p>
+</div>
+  <p onClick="window.location='/about';" class="text text-20">ABOUT</p>
+  <p onClick="window.location='/';" class="text text-21">HOME</p>
+  <p class="text text-22">The Results</p>
+  <p class="text text-23">K-Nearest Neighbors
+</p>
+  <p class="text text-24">The Results</p>
+  <p class="text text-25">Multiple Linear Regression (Our last hope)
+</p>
+  <p class="text text-26">The Results</p>
+  <p class="text text-27">So does the news have feelings? Probably not.</p>
+  <p class="text text-28">CONCLUSION</p>
+
+  <script src="js/jquery-min.js"></script>
+  <script src="js/rimages.js"></script>
+</body>
+</html>

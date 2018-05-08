@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>about1</title>
+  <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400,Regular,Bold" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='standardize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about1-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about1.css') }}">
+</head>
+<body class="body page-about1 clearfix">
+  <img class="image image-1" src="/static/UML.png" width=599px height=376px>
+  <p class="text text-1">Implementation</p>
+  <p class="text text-2">And we want to navigate the news.</p>
+  <p class="text text-3">ABOUT</p>
+  <p onClick="window.location='/';" class="text text-4">HOME</p>
+  <p onClick="window.location='/resources';" class="text text-5">RESOURCES</p>
+  <p class="text text-6">Background</p>
+  <img class="image image-2" src="/static/minimaltrump.jpg" width=288px height=384px>
+  <div class="text text-7">
+    <p>To use, simply visit our homepage and enter your news article in URL format.&nbsp;<br><br></p>
+    <p>Want to learn or see more? Visit our Github repo, here.</p>
+</div>
+  <p class="text text-8">Use</p>
+  <div class="text text-9">
+    <p>In our divided world today, accusations of media bias sully the political process and stifle intellectual progress through a perpetual focus on eradicating any emotion behind admonition. Many on both sides of the political aisle see the other side’s news organizations as overly emotional and negative.&nbsp;<br></p>
+    <p>We put these accusations to the test and developed a Python program that scrapes the web for news articles involving President Donald Trump from several discrete time periods, performed a sentiment analysis on them, and graphed the mean sentiment on three axes: positive, negative, and neutral.&nbsp;</p>
+    <p>We then sorted and visualized the data by media outlet, calculated the centroid of each one, and applied a k-nearest neighbors algorithm. Using this, our goal is to classify an article from an unknown news source into its correct place of origin.
+</p>
+</div>
+  <p class="text text-10">Hi, we're Vader</p>
+  <div class="text text-11">
+    <p>To reach our goal, we approached the division of labor and execution by idenifying four areas:</p>
+    <p>Strategy: To identify individual members strengths, assigning them to lead the part of the project they are most excited about completing.</p>
+    <p>Research: Research news sources and compile a list of sources we wish to use to generate our data sets.&nbsp;
+</p>
+    <p>Implementation:
+Build a scraper that extracts articles from various sources, parses the data, and vectorizes them. (Tfidf vectorizer, nltk) &nbsp;and perform various forms of analysis using machine learning methods .&nbsp;</p>
+    <p>Visualization: Present the data in 3D space (using matplotlib) and on a GUI &nbsp;(hello, Flask!)</p>
+</div>
+  <p class="text text-12">Approach and Journey</p>
+  <div class="text text-13">
+    <p>To begin the project, we built a manual database from the following news sources:&nbsp;</p>
+    <p>Al-Jazeera
+<br>BBC
+<br>Breitbart
+<br>CNN<br>FOX News
+<br>Huffington Post
+<br>NBC News
+<br>New York Times
+<br>NPR
+Washington Post
+<br><br>These news sources were selected based on a mixture of personal preference and popularity.
+<br>To control our set, we placed the following parameters:
+<br><br></p>
+    <p>For President Donald Trump: 10 articles from each source, with date range: Nov 8 2016 – Nov 12 2016&nbsp;</p>
+    <p>For President Barack Obama: 10 articles from each source, with date range: Nov 8 2008 – Nov 12 2008&nbsp;</p>
+    <p>Roadblock #1
+</p>
+</div>
+  <img class="image image-3" src="/static/barack2.png" width=288px height=384px>
+  <img class="image image-4" src="/static/barack1.png" width=288px height=384px>
+  <div class="text text-14">
+    <p>In order to compare articles written about President Trump, our initial desires were to find an equal set of articles on President Barack Obama post-election first term, however, we were surprised to find that most data outlets stayed silent or were limited in their releases-- averaging 5 articles during the Nov. 8 - Nov. 11 window.&nbsp;</p>
+    <p><br>Because of limited data, we chose to leave analyzation on sentiment of President Barack Obama out of the project and decided to dedicate more efforts towards building the President Donald Trump database.
+<br><br>To supplement our database, we increased the number of collected articles of President Trump. In order to ensure variety, we decided to collect from two additional windows of time.&nbsp;</p>
+    <p>From each source, 10 articles from each data range were collected:
+<br>Date range: Nov 8 2016 – Nov 12 2016
+<br>Date range: Jan 1 2017 – Jan 31 2017
+<br>Date range April 1 2017 – May 31 2017&nbsp;<br></p>
+</div>
+  <p class="text text-15">Sentiment Analysis, CSV for further research, and Plotting
+</p>
+  <div class="text text-16">
+    <p>Newspaper3k, NTLK, Pandas, and Matplotlib were the driving forces behind the analysis and visualization of the project.&nbsp;</p>
+    <p>&nbsp;The 300 articles underwent sentiment analysis and the values were exported into a CSV file in order to visualize as well as analyze using various ML methods.
+
+(Because the database was manually built, only the user input utilizes Newspaper3k.)
+</p>
+</div>
+  <p class="text text-17">Front-End Development
+</p>
+  <div class="text text-18">
+    <p>The front-end development picked up slowly, largely demanding more attention as the project evolved.
+
+The goal was to create an experience that would entice the user to investigate and question the news around them. We wanted to create something easy, approachable, as well as site that not only held our tool, but also documented our processes along the way. Combining the project website with the main part of the project proved itself to be difficult—with various deadlines for each component, identifying a space for both to come together became challenging.&nbsp;</p>
+    <p>Roadblock #2&nbsp;</p>
+    <p>The needs of the front end were only vaguely identified at the beginning, and at the time of integration, changes to the source code had to be changed.
+
+Lessons learned, front-end and back-end development should be designed in parallel, not at different times.<br></p>
+</div>
+  <p class="text text-19">Exploring ML Classification</p>
+  <div class="text text-20">
+    <p>Before the beginning of the product, we had agreed that an accuracy of 48% or higher in the classification results of our analysis indicated that there was a strong correlation between bias and the news source responsible for publishing the material.&nbsp;</p>
+    <p>Our findings were so extensive, we're dedicating an entire page to them.</p>
+</div>
+  <p onClick="window.location='/mlfindings';" class="text text-21">Click me to explore the end of this journey</p>
+  <div class="container"></div>
+</body>
+</html>
