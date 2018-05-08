@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('Social_Network_Ads.csv')
-X = dataset.iloc[:, [2, 3]].values
-y = dataset.iloc[:, 4].values
+dataset = pd.read_csv('Frame.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, 5].values
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.cross_validation import train_test_split
@@ -27,6 +27,11 @@ classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
+
+
+# Geting the accuracy score
+from sklearn.metrics import accuracy_score
+print (accuracy_score(y_test,y_pred))
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
