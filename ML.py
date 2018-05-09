@@ -1,5 +1,6 @@
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from mpl_toolkits.mplot3d import Axes3D
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import statistics as stat
 import pandas as pd
