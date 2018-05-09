@@ -4,6 +4,9 @@ import pandas as pd
 import os
 import glob
 
+###        #Unfortunately, matplotlib is not supported on Heroku, so part of the program's functionality is lost. 
+### An image has beeen saved in place of the generated plot to keep user experience.
+
 app = Flask(__name__)
 
 #Routing or mapping, URL to python function
@@ -11,7 +14,7 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         url_data = request.form["url"]
-        plot = ML.plot_whole_dataframe(ML.dataframe_to_list('Al-Jazeera'),ML.dataframe_to_list('BBC'),ML.dataframe_to_list('Breitbart'),ML.dataframe_to_list('CNN'),ML.dataframe_to_list('FOX'),ML.dataframe_to_list('HuffPo'),ML.dataframe_to_list('NBCNews'),ML.dataframe_to_list('NPR'),ML.dataframe_to_list('NYT'),ML.dataframe_to_list('WashPo'), url_data)
+        #plot = ML.plot_whole_dataframe(ML.dataframe_to_list('Al-Jazeera'),ML.dataframe_to_list('BBC'),ML.dataframe_to_list('Breitbart'),ML.dataframe_to_list('CNN'),ML.dataframe_to_list('FOX'),ML.dataframe_to_list('HuffPo'),ML.dataframe_to_list('NBCNews'),ML.dataframe_to_list('NPR'),ML.dataframe_to_list('NYT'),ML.dataframe_to_list('WashPo'), url_data)
         return render_template("results.html")
     return render_template("index.html")
 
