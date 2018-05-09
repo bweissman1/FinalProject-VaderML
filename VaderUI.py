@@ -3,8 +3,6 @@ import ML
 import pandas as pd
 import os
 import glob
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
@@ -37,5 +35,3 @@ def resources():
 
 if __name__ == "__main__":
     app.run(debug=False, use_reloader=False)
-
-#sve the .png, function return the path to the image as a string or w/e, pass in the path to the png. MPLD3, save it as pure html,
