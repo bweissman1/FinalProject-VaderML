@@ -1,1 +1,1 @@
-web: python flask/VaderUI.py
+web: gunicorn VaderUi.py:app
